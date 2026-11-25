@@ -8,6 +8,7 @@ const FILES = [
   "./catalog.html",
   "./forma.html",
   "./style.css",
+  "./catalog.js",        
   "./manifest.webmanifest",
   "./p/images(3).jfif",
   "./p/images(4).jfif",
