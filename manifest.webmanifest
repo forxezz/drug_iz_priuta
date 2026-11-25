@@ -1,7 +1,6 @@
-
 {
   "id": "./",
-  "name": "Друг из приюта Вариант 22",
+  "name": "Друг из приют Вариант 22",
   "short_name": "Друг",
   "lang": "ru",
   "start_url": "./main.html",
@@ -9,16 +8,4 @@
   "display": "standalone",
   "background_color": "#e8edf5",
   "theme_color": "#1a2b4c"
-
-{
-  "id": "./",
-  "name": "Друг из приюта Вариант 22",
-  "short_name": "Друг",
-  "lang": "ru",
-  "start_url": "./main.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#e8edf5",
-  "theme_color": "#1a2b4c"
-
 }
