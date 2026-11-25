@@ -1,0 +1,23 @@
+{
+  "id": "./",
+  "name": "Друг из приюта Вариант 22",
+  "short_name": "В22",
+  "lang": "ru",
+  "start_url": "./main.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#e8edf5",
+  "theme_color": "#1a2b4c",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
