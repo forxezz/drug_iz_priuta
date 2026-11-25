@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>План знакомства</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#24547a">
 </head>
 <body>
 
@@ -67,5 +69,14 @@
 
 <!-- ПОДКЛЮЧАЕМ НОВЫЙ СКРИПТ -->
 <script src="form.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW зарегистрирован', reg))
+        .catch(err => console.log('Ошибка SW', err));
+    });
+  }
+</script>
 </body>
 </html>
