@@ -1,19 +1,19 @@
-const VERSION = "v1";
+const VERSION = 'v1';
 const SCOPE = self.registration.scope;
 const CACHE_PREFIX = `variantnn-web:${SCOPE}:`;
 const CACHE_NAME = CACHE_PREFIX + VERSION;
 
 const FILES = [
-  "./index.html",
+  "./main.html",
   "./catalog.html",
   "./form.html",
   "./style.css",
   "./manifest.webmanifest",
   "./images/icon-192.png",
   "./images/icon-512.png",
-  "./p/images(3).jfif",       // Первая картинка
-  "./p/images(4).jfif", // Вторая картинка (замените на реальное имя)
-  "./p/images(5).jfif"  // Третья картинка (без запятой в конце!)
+  "./p/images(3).jfif",
+  "./p/images(4).jfif",
+  "./p/images(5).jfif"
 ];
 
 self.addEventListener("install", (event) => {
