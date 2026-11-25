@@ -52,4 +52,60 @@
   }
 </script>
 </body>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши друзья</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#24547a">
+</head>
+<body>
+
+<header class="site-header">
+    <h1 class="site-title">Друг из приюта · V22</h1>
+</header>
+
+<nav class="main-nav">
+    <a href="main.html">Главная</a>
+    <a href="forma.html">Форма</a>
+</nav>
+
+<main class="page">
+    <h2 class="page-title">Наши друзья</h2>
+    <p class="subtitle">Выберете одну из трёх позиций</p>
+
+    <!-- Строка поиска -->
+    <p style="margin-bottom: 20px;">
+        <label for="search" style="font-weight: bold; margin-right: 10px;">Поиск по названию</label>
+        <input id="search" type="search" placeholder="Введите часть названия" style="padding: 8px; border-radius: 4px; border: 1px solid #a0b2c6; width: 100%; max-width: 300px;">
+    </p>
+
+    <!-- Пустой контейнер для карточек -->
+    <div id="catalog-list" class="products"></div>
+
+    <!-- Счетчик результатов -->
+    <p id="status" role="status" style="font-weight: bold; margin-top: 15px;"></p>
+</main>
+
+<footer class="site-footer">
+    Учебный прототип · Вариант 22
+</footer>
+
+<!-- Подключаем скрипт для каталога -->
+<script src="catalog-page.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW зарегистрирован', reg))
+        .catch(err => console.log('Ошибка SW', err));
+    });
+  }
+</script>
+</body>
+
 </html>

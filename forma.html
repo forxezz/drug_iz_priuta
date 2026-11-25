@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -79,4 +80,87 @@
   }
 </script>
 </body>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>План знакомства</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#24547a">
+</head>
+<body>
+
+<header class="site-header">
+    <h1 class="site-title">Друг из приюта · V22</h1>
+</header>
+
+<nav class="main-nav">
+    <a href="main.html">Главная</a>
+    <a href="catalog.html">Каталог</a>
+</nav>
+
+<main class="page">
+    <h2 class="page-title">План знакомства</h2>
+    <p class="subtitle">Учебная форма. Данные пока не сохраняются.</p>
+
+    <form class="request-form" method="get">
+        <div class="form-field">
+            <label for="item">Кличка животного</label>
+            <select id="item" name="item" required>
+                <option value="">Выберите из списка</option>
+                <option value="barsik">Барсик</option>
+                <option value="ryzhik">Рыжик</option>
+                <option value="luna">Луна</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="quantity">Количество посетителей</label>
+            <!-- id должен быть "quantity", как требует задание -->
+            <input type="number" id="quantity" name="quantity" value="2" min="1" step="1" required>
+        </div>
+
+        <div class="form-field">
+            <label for="wishes">Пожелания к встрече</label>
+            <textarea id="wishes" name="wishes" rows="4" placeholder="Опишите ваши пожелания"></textarea>
+        </div>
+
+        <div class="checkbox-field">
+            <label class="checkbox-label"><input type="checkbox" checked name="walk"> Прогулка с волонтёром</label>
+            <label class="checkbox-label"><input type="checkbox" name="toy"> Принести игрушку</label>
+        </div>
+
+        <div class="form-field">
+            <label for="duration">Длительность встречи</label>
+            <input type="range" id="duration" name="duration" min="1" max="5" value="3">
+            <div class="range-labels"><span>1 — Короткая; 5 — Долгая</span></div>
+        </div>
+
+        <button type="submit" class="btn-submit">Выбрать встречу</button>
+
+        <!-- НОВЫЙ АБЗАЦ ДЛЯ ВЫВОДА РЕЗУЛЬТАТА -->
+        <p id="result" role="status" aria-live="polite" style="font-weight: bold; font-size: 18px; margin-top: 15px; color: #2b548e;"></p>
+    </form>
+</main>
+
+<footer class="site-footer">
+    Учебный прототип · Вариант 22
+</footer>
+
+<!-- ПОДКЛЮЧАЕМ НОВЫЙ СКРИПТ -->
+<script src="form.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW зарегистрирован', reg))
+        .catch(err => console.log('Ошибка SW', err));
+    });
+  }
+</script>
+</body>
+
 </html>

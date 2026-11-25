@@ -1,3 +1,4 @@
+
 const VERSION = 'v2';
 const SCOPE = self.registration.scope;
 const CACHE_PREFIX = `variantnn-web:${SCOPE}:`;
@@ -45,4 +46,53 @@ self.addEventListener("fetch", (event) => {
       return savedResponse ?? fetch(request);
     })
   );
+
+const VERSION = 'v1';
+const SCOPE = self.registration.scope;
+const CACHE_PREFIX = `variantnn-web:${SCOPE}:`;
+const CACHE_NAME = CACHE_PREFIX + VERSION;
+
+const FILES = [
+  "./main.html",
+  "./catalog.html",
+  "./forma.html",
+  "./style.css",
+  "./catalog.js",        
+  "./manifest.webmanifest",
+  "./p/images(3).jfif",
+  "./p/images(4).jfif",
+  "./p/images(5).jfif"
+];
+
+self.addEventListener("install", (event) => {
+  const requests = FILES.map((path) =>
+    new Request(new URL(path, SCOPE), { cache: "reload" })
+  );
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(requests))
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((names) => {
+      const oldVersions = names.filter((name) =>
+        name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME
+      );
+      return Promise.all(oldVersions.map((name) => caches.delete(name)));
+    })
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  if (request.method !== "GET" || !request.url.startsWith(SCOPE)) return;
+
+  event.respondWith(
+    caches.open(CACHE_NAME).then(async (cache) => {
+      const savedResponse = await cache.match(request);
+      return savedResponse ?? fetch(request);
+    })
+  );
+
 });

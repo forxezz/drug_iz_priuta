@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -14,6 +15,66 @@
 <header class="site-header">
     <h1 class="site-title">Друг из приют · V22</h1>
     <p>Учебная версия 2</p>
+</header>
+
+<nav class="main-nav">
+    <a href="catalog.html">Каталог</a>
+    <a href="forma.html">Форма</a>
+</nav>
+
+<main class="page">
+    <!-- Добавлен ID для смены заголовка из JS -->
+    <h2 class="page-title" id="main-heading">Познакомьтесь с новым другом</h2>
+    <p class="subtitle">Встречи в сопровождении волонтёра</p>
+
+    <p id="status" role="status" style="font-weight: bold; margin-bottom: 15px; font-size: 18px;"></p>
+    
+    <button id="show-names" type="button" class="btn-submit" style="margin-bottom: 15px;">Показать названия</button>
+    
+    <ul id="names" style="margin-bottom: 20px; font-size: 18px; padding-left: 20px;"></ul>
+
+    <div class="hero-image">
+        <img src="p/images(2).jfif" alt="Кот">
+    </div>
+    
+    <p class="description-text">Три предложения для выбора. Встречи в сопровождении волонтёра.</p>
+    
+    <div class="links-list">
+        <a href="catalog.html">Открыть каталог</a>
+        <a href="forma.html">Выбрать встречу</a>
+    </div>
+</main>
+
+<footer class="site-footer">
+    Учебный прототип · Вариант 22
+</footer>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW зарегистрирован', reg))
+        .catch(err => console.log('Ошибка SW', err));
+    });
+  }
+</script>
+</body>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Друг из приют</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="catalog.js" defer></script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#24547a">
+</head>
+<body>
+
+<header class="site-header">
+    <h1 class="site-title">Друг из приют · V22</h1>
+    <p>Учебная версия 1</p>
 </header>
 
 <nav class="main-nav">
