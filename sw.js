@@ -6,11 +6,9 @@ const CACHE_NAME = CACHE_PREFIX + VERSION;
 const FILES = [
   "./main.html",
   "./catalog.html",
-  "./form.html",
+  "./forma.html",
   "./style.css",
   "./manifest.webmanifest",
-  "./images/icon-192.png",
-  "./images/icon-512.png",
   "./p/images(3).jfif",
   "./p/images(4).jfif",
   "./p/images(5).jfif"
