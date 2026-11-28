@@ -1,4 +1,4 @@
-// === 1. Функция калькулятора (из пары 20) ===
+// === 1. Функция калькулятора ===
 function getResult(quantityText, unitAmount, extraAmount) {
     if (quantityText.trim() === "") return "Ошибка: укажите количество";
     const quantity = Number(quantityText);
@@ -7,32 +7,37 @@ function getResult(quantityText, unitAmount, extraAmount) {
     return "Итого: " + (quantity * unitAmount + extraAmount);
 }
 
-// === 2. Константы для расчёта (из пары 20) ===
+// === 2. Константы для расчёта ===
 const unitValue = 2;
 const extraValue = 3;
 
 // === 3. Работа с формой ===
 const form = document.querySelector("form");
-const result = document.querySelector("#result"); // Наш абзац для вывода
+const result = document.querySelector("#result");
+const quantityInput = document.querySelector("#quantity");
+
+// Очищаем результат при любом изменении полей
 form.addEventListener("input", function () { 
     result.textContent = ""; 
 });
 
 // Перехватываем отправку формы
 form.addEventListener("submit", function (event) {
-    // Отменяем перезагрузку страницы
     event.preventDefault();
 
-    // 1. Читаем количество посетителей (это всегда строка)
-    const quantityText = document.querySelector("#quantity").value;
-
-    // 2. Получаем название выбранного питомца
+    const quantityText = quantityInput.value;
     const select = document.querySelector("#item");
     const itemName = select.options[select.selectedIndex].text;
 
-    // 3. Считаем итог через нашу функцию
-    const message = getResult(quantityText, unitValue, extraValue);
+    // ПРОВЕРКА: если количество не целое или меньше 1, показываем ошибку
+    // и очищаем результат (на случай, если браузер пропустил отправку)
+    const quantity = Number(quantityText);
+    if (quantityText.trim() === "" || isNaN(quantity) || quantity <= 0 || !Number.isInteger(quantity)) {
+        result.textContent = itemName + ". Ошибка: нужно положительное целое количество";
+        return;
+    }
 
-    // 4. Выводим сообщение на страницу (название + результат)
+    // Если всё хорошо — считаем итог
+    const message = getResult(quantityText, unitValue, extraValue);
     result.textContent = itemName + ". " + message;
 });
