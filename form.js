@@ -14,6 +14,9 @@ const extraValue = 3;
 // === 3. Работа с формой ===
 const form = document.querySelector("form");
 const result = document.querySelector("#result"); // Наш абзац для вывода
+form.addEventListener("input", function () { 
+    result.textContent = ""; 
+});
 
 // Перехватываем отправку формы
 form.addEventListener("submit", function (event) {
